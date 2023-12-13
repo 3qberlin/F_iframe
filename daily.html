@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>daily</title>
+</head>
+
+<body>
+    <li class="tab-pane fade overflow-auto" id="tab-dailyHousing" role="tabpanel" aria-labelledby="tab-dailyHousing"
+        tabindex="0">
+        <div class="card">
+            <div class="card-body d-flex flex-wrap row-cols-1 rol-cols-md-auto m-0 p-0 p-12">
+                <form class="d-flex flex-nowrap ps-n12">
+                    <!-- 單日期選擇器 -->
+                    <div class="col-auto date">
+                        <div class="input-group date w-160px">
+                            <input type="text" class="form-control text-center" id="dateDailyHousing" />
+                            <div class="input-group-addon" id="spanDateDailyHousing">
+                                <span class="input-group-text bg-light d-block">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto ms-16">
+                        <div class="input-group-addon">
+                            <div class="btn-group" role="group" aria-label="dayInputGroup">
+                                <button type="button" class="btn btn-outline-secondary p-0 px-8 py-6"
+                                    id="prevdateDailyHousing"><i class="bi bi-arrow-left"></i></button>
+                                <button type="button" class="btn btn-outline-secondary p-0 px-8 text-nowrap"
+                                    id="todaydateDailyHousing">本日</button>
+                                <button type="button" class="btn btn-outline-secondary p-0 px-8"
+                                    id="nextdateDailyHousing"><i class="bi bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mt-12">
+            <div class="card-body p-0 pt-12 pe-md-16">
+
+                <div class="d-flex justify-content-end p-0">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switchDailyHousing"
+                            id="switchDailyHousing">
+                        <label class="form-check-label" for="switchDailyHousing">人數</label>
+                    </div>
+                    <div class="ms-12">
+                        <a href="#"><span class="badge bg-secondary m-4 rounded-1 fw-normal">列印</span></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-body table-responsive pt-8 ">
+                <table class="table table-lg table-hover align-middle">
+                    <thead class="table-info text-center">
+                        <tr>
+                            <th>#</th>
+                            <th scope="col"><span class="text-nowrap">訂單編號</span></th>
+                            <th scope="col"><span class="text-nowrap">訂房人</span></th>
+                            <th scope="col"><span class="text-nowrap">訂單內容</span></th>
+                            <th scope="col"><span class="text-nowrap">入住人</span></th>
+                            <th scope="col"><span class="text-nowrap">總價</span></th>
+                            <th scope="col"><span class="text-nowrap">已付</span></th>
+                            <th scope="col" class="bg-warning"><span class="text-nowrap">尚欠</span></th>
+                            <th scope="col"><span class="text-nowrap">備註</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <td>
+                                <p class="text-center"><a href="#" class="text-blue d-inline-block">00012345</a></p>
+                                <p>
+                                    <span class="text-oGreen mx-2">手</span><span class="text-oGreen mx-2">B</span><span
+                                        class="text-danger mx-2">未</span><span class="text-oBlue mx-2">網</span><span
+                                        class="text-oOrange mx-2">團</span>
+                                </p>
+                            </td>
+                            <td class="text-center">廖添丁<br>0911***456</td>
+                            <td>12/12 <span class="mx-2 text-blue">1</span>天[一般] TW x 1<br>
+                                <hr class="m-0 p-0 dotted"><span class="mx-2 text-blue">房號：</span>102[<span
+                                    class="mx-2 text-danger">1</span>間]
+                            </td>
+                            <td class="text-center">廖添財<br>0911***457</td>
+                            <td class="text-end">3,000</td>
+                            <td class="text-end">0</td>
+                            <td class="text-end">3,000</td>
+                            <td>
+                                <p>需求：要有對外窗</p>
+                                <p>處理：已安排</p>
+                                <p>付款：</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <td></td>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </li>
+
+    <script>
+        $(function () {
+            let dailyHousing = $('#dateDailyHousing');
+
+            var today = new Date();
+            let formattedDate = formatDateDailyHousing(today);
+            dailyHousing.val(formattedDate);
+
+            $('#dateDailyHousing').datepicker(ops);
+
+            $('#prevdateDailyHousing').click(function () {
+                modifyDateDailyHousing(-1);
+                $('#dateDailyHousing').datepicker('update');
+            });
+
+            $('#nextdateDailyHousing').click(function () {
+                modifyDateDailyHousing(1);
+                $('#dateDailyHousing').datepicker('update');
+            });
+
+            $('#todaydateDailyHousing').click(function () {
+                setTodayDailyHousing();
+                $('#dateDailyHousing').datepicker('update');
+            });
+
+            $('#spanDateDailyHousing').click(function () {
+                $('#dateDailyHousing').datepicker('show');
+            });
+
+            function setTodayDailyHousing() {
+                var today = new Date();
+                var formattedToday = formatDateDailyHousing(today);
+                dailyHousing.val(formattedToday);
+            }
+
+            function formatDateDailyHousing(date) {
+                var year = date.getFullYear();
+                var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                var day = ('0' + date.getDate()).slice(-2);
+                return year + '-' + month + '-' + day;
+            }
+
+            function modifyDateDailyHousing(days) {
+                var currentDate = new Date(dailyHousing.val());
+                currentDate.setDate(currentDate.getDate() + days);
+                var formattedDate = formatDateDailyHousing(currentDate);
+                dailyHousing.val(formattedDate);
+            }
+        });
+    </script>
+</body>
+
+</html>

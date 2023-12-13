@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>automatic</title>
+</head>
+<body>
+    <li class="tab-pane fade overflow-auto" id="tab-automaticReconciliation" role="tabpanel"
+    aria-labelledby="tab-automaticReconciliation" tabindex="0">
+    <div class="card">
+        <form class="row card-body d-flex flex-wrap row-cols-1 rol-cols-md-auto m-0 p-0 p-12">
+            <!-- 雙日期選擇器 -->
+            <div class="col-auto mb-12 date">
+                <div class="d-flex flex-nowrap">
+                    <div class="input-group input-daterange">
+                        <span class="input-group-text border-0 m-0">從</span>
+                        <input type="text" id="startAutomaticReconciliation" placeholder="請選擇日期"
+                            class="form-control form-control-sm m-0 p-0 border-secondary rounded-1 min-96px">
+                    </div>
+                    <div class="input-group input-daterange">
+                        <span class="input-group-text border-0 m-0">到</span>
+                        <input type="text" id="endAutomaticReconciliation" placeholder="請選擇日期"
+                            class="form-control form-control-sm m-0 p-0 border-secondary rounded-1 min-96px">
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto mb-12">
+                <div class="input-group-addon input-group-sm overflow-auto d-flex flex-nowrap">
+                    <div class="btn-group " role="group" aria-label="dayInputGroup">
+                        <button type="button" class="btn btn-outline-secondary p-0 px-8"
+                            id="prevDayAutomaticReconciliation"><i class="bi bi-arrow-left"></i></button>
+                        <button type="button" class="btn btn-outline-secondary p-0 px-8 text-nowrap"
+                            id="todayAutomaticReconciliation">本日</button>
+                        <button type="button" class="btn btn-outline-secondary p-0 px-8"
+                            id="nextDayAutomaticReconciliation"><i class="bi bi-arrow-right"></i></button>
+                    </div>
+                    <div class="btn-group ms-16" role="group" aria-label="weekInputGroup">
+                        <button type="button" class="btn btn-outline-secondary p-0 px-8"
+                            id="prevWeekAutomaticReconciliation"><i class="bi bi-arrow-left"></i></button>
+                        <button type="button" class="btn btn-outline-secondary p-0 px-8 text-nowrap"
+                            id="thisWeekAutomaticReconciliation">本週</button>
+                        <button type="button" class="btn btn-outline-secondary p-0 px-8"
+                            id="nextWeekAutomaticReconciliation"><i class="bi bi-arrow-right"></i></button>
+                    </div>
+                    <div class="btn-group ms-16" role="group" aria-label="monthInputGroup">
+                        <button type="button" class="btn btn-outline-secondary p-0 px-8"
+                            id="prevMonthAutomaticReconciliation"><i class="bi bi-arrow-left"></i></button>
+                        <button type="button" class="btn btn-outline-secondary p-0 px-8 text-nowrap"
+                            id="thisMonthAutomaticReconciliation">本月</button>
+                        <button type="button" class="btn btn-outline-secondary p-0 px-8"
+                            id="nextMonthAutomaticReconciliation"><i class="bi bi-arrow-right"></i></button>
+                    </div>
+                    <button class="btn btn-outline-secondary py-6 px-8 ms-16 text-nowrap"
+                        id="thisYearAutomaticReconciliation">今年</button>
+                </div>
+            </div>
+            <div class="col-12 d-flex flex-wrap">
+                <%- include('../components/payment'); -%>
+                    <div class="col-12 col-md-auto mb-12 ms-md-16">
+                        <%- include('../components/reconciliationResults'); -%>
+                    </div>
+                    <div class="col-12 col-md-auto mb-12 ms-md-16">
+                        <%- include('../components/orderNumber'); -%>
+                    </div>
+            </div>
+            <div class="col-12 d-flex justify-content-center justify-content-md-end">
+                <input type="reset" value="清除" class="btn btn-yellow resetAutomaticReconciliation">
+                <input type="submit" value="送出" class="btn btn-primary ms-12">
+            </div>
+
+        </form>
+    </div>
+
+    <div class="card mt-12">
+        <div class="d-flex justify-content-end m-0 pt-12 pe-0 pe-md-16">
+            <a href="#"><span class="badge bg-info m-4 rounded-1 fw-normal">另存</span></a>
+            <a href="#"><span class="badge bg-secondary m-4 rounded-1 fw-normal">列印</span></a>
+            <a href="#"><span class="badge bg-orange m-4 rounded-1 fw-normal">重整</span></a>
+        </div>
+        <div class="card-body table-responsive pt-8">
+            <table class="table table-lg table-hover text-center align-middle">
+                <thead class="table-info">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col"><span class="text-nowrap">分館</span></th>
+                        <th scope="col"><span class="text-nowrap">類別</span></th>
+                        <th scope="col"><span class="text-nowrap">訂單編號</span></th>
+                        <th scope="col"><span class="text-nowrap">付款方式</span></th>
+                        <th scope="col"><span class="text-nowrap">銀行</span></th>
+                        <th scope="col"><span class="text-nowrap">帳號</span></th>
+                        <th scope="col"><span class="text-nowrap">金額</span></th>
+                        <th scope="col"><span class="text-nowrap">結果</span></th>
+                        <th scope="col"><span class="text-nowrap">備註</span></th>
+                        <th scope="col"><span class="text-nowrap">接收時間</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td><a href="#" class="text-blue">@mdo</a></td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>Mark</td>
+                        <td class="text-blue">成功</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>Jacob</td>
+                        <td class="text-danger">失敗</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry the Bird</td>
+                        <td>@twitter</td>
+                        <td>Thornton</td>
+                        <td>Larry the Bird</td>
+                        <td>@twitter</td>
+                        <td>Thornton</td>
+                        <td>Larry the Bird</td>
+                        <td class="text-orange">失敗</td>
+                        <td>Thornton</td>
+                        <td>Thornton</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</li>
+
+<script>
+    // 雙日期選擇器
+    $(function () {
+        // 初始設定為今天日期
+        let today = new Date();
+        $('#startAutomaticReconciliation').val(formatDateAutomaticReconciliation(today));
+        $('#endAutomaticReconciliation').val(formatDateAutomaticReconciliation(today));
+
+        $('#startAutomaticReconciliation, #endAutomaticReconciliation').datepicker(ops);
+
+        // 按鈕事件處理
+        $('#prevDayAutomaticReconciliation').click(function () {
+            modifyDateAutomaticReconciliation(-1);
+            console.log('this');
+        });
+        $('#nextDayAutomaticReconciliation').click(function () {
+            modifyDateAutomaticReconciliation(1);
+        });
+        $('#prevWeekAutomaticReconciliation').click(function () {
+            modifyWeekAutomaticReconciliation(-7);
+        });
+        $('#thisWeekAutomaticReconciliation').click(function () {
+            setWeekDatesAutomaticReconciliation();
+        });
+        $('#nextWeekAutomaticReconciliation').click(function () {
+            modifyWeekAutomaticReconciliation(7);
+        });
+        $('#prevMonthAutomaticReconciliation').click(function () {
+            modifyMonthAutomaticReconciliation(-1);
+        });
+        $('#thisMonthAutomaticReconciliation').click(function () {
+            setMonthDatesAutomaticReconciliation();
+        });
+        $('#nextMonthAutomaticReconciliation').click(function () {
+            modifyMonthAutomaticReconciliation(1);
+        });
+        $('#thisYearAutomaticReconciliation').click(function () {
+            setYearDatesAutomaticReconciliation();
+        });
+        $('#todayAutomaticReconciliation').click(function () {
+            setTodayAutomaticReconciliation();
+        });
+    });
+
+    // 修改日期的輔助函數
+    function modifyDateAutomaticReconciliation(days) {
+        var date1 = new Date($('#startAutomaticReconciliation').val());
+        var date2 = new Date($('#endAutomaticReconciliation').val());
+
+        date1.setDate(date1.getDate() + days);
+        date2.setDate(date2.getDate() + days);
+
+        $('#startAutomaticReconciliation').datepicker('setDate', date1);
+        $('#endAutomaticReconciliation').datepicker('setDate', date2);
+    }
+
+    // 設置本週日期
+    function setWeekDatesAutomaticReconciliation() {
+        var today = new Date();
+        var firstDayOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); // 本週的第一天是星期日
+        var lastDayOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + 6)); // 本週的最後一天是星期六
+
+        $('#startAutomaticReconciliation').datepicker('setDate', firstDayOfWeek);
+        $('#endAutomaticReconciliation').datepicker('setDate', lastDayOfWeek);
+    }
+
+    // 修改週的輔助函數
+    function modifyWeekAutomaticReconciliation(days) {
+        var date1 = new Date($('#startAutomaticReconciliation').val());
+        var date2 = new Date($('#endAutomaticReconciliation').val());
+
+        date1.setDate(date1.getDate() + days);
+        date2.setDate(date2.getDate() + days);
+
+        var firstDayOfWeek = new Date(date1.setDate(date1.getDate() - date1.getDay()));
+        var lastDayOfWeek = new Date(date2.setDate(date2.getDate() - date2.getDay() + 6));
+
+        $('#startAutomaticReconciliation').datepicker('setDate', firstDayOfWeek);
+        $('#endAutomaticReconciliation').datepicker('setDate', lastDayOfWeek);
+    }
+
+    // 修改月份的輔助函數
+    function modifyMonthAutomaticReconciliation(months) {
+        var date1 = new Date($('#startAutomaticReconciliation').val());
+        var date2 = new Date($('#endAutomaticReconciliation').val());
+
+        var targetMonth = date1.getMonth() + months;
+        date1 = new Date(date1.getFullYear(), targetMonth, 1); // 设置 date1 为目标月份的第一天
+        date2 = new Date(date1.getFullYear(), date1.getMonth() + 1, 0); // 设置 date2 为 date1 当月的最后一天
+
+        $('#startAutomaticReconciliation').datepicker('setDate', date1);
+        $('#endAutomaticReconciliation').datepicker('setDate', date2);
+    }
+
+    // 設置本月日期
+    function setMonthDatesAutomaticReconciliation() {
+        var today = new Date();
+        var firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+        var lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+        $('#startAutomaticReconciliation').datepicker('setDate', firstDayOfMonth);
+        $('#endAutomaticReconciliation').datepicker('setDate', lastDayOfMonth);
+    }
+
+    // 設置本年日期
+    function setYearDatesAutomaticReconciliation() {
+        var today = new Date();
+        var firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+        var lastDayOfYear = new Date(today.getFullYear(), 11, 31);
+
+        $('#startAutomaticReconciliation').datepicker('setDate', firstDayOfYear);
+        $('#endAutomaticReconciliation').datepicker('setDate', lastDayOfYear);
+    }
+
+    // 設置本日日期
+    function setTodayAutomaticReconciliation() {
+        var today = new Date();
+        $('#startAutomaticReconciliation').datepicker('setDate', today);
+        $('#endAutomaticReconciliation').datepicker('setDate', today);
+    }
+
+    // 格式化日期函數
+    function formatDateAutomaticReconciliation(date) {
+        var year = date.getFullYear();
+        var month = ('0' + (date.getMonth() + 1)).slice(-2);
+        var day = ('0' + date.getDate()).slice(-2);
+        return year + '-' + month + '-' + day;
+    }
+    const resetAutomaticReconciliation = document.querySelector('.resetAutomaticReconciliation');
+
+    resetAutomaticReconciliation.addEventListener('click', function (event) {
+        event.preventDefault();
+        // 查找最近的表單元素
+        const form = resetAutomaticReconciliation.closest('form');
+
+        if (form) {
+            // 重置表單
+            form.reset();
+
+            // 獲取今天的日期
+            let today = new Date();
+            const inputAutomaticReconciliation1 = form.querySelector('#startAutomaticReconciliation');
+            const inputAutomaticReconciliation2 = form.querySelector('#endAutomaticReconciliation');
+
+            if (inputAutomaticReconciliation1 && inputAutomaticReconciliation2) {
+                inputAutomaticReconciliation1.value = formatDateAutomaticReconciliation(today);
+                inputAutomaticReconciliation2.value = formatDateAutomaticReconciliation(today);
+            }
+        }
+    });
+</script>
+</body>
+</html>
